@@ -4,9 +4,7 @@ Yii::app()->moduleManager->register(array(
     'id' => 'breakingnews',
     'class' => 'application.modules.breakingnews.BreakingNewsModule',
     'title' => Yii::t('BreakingNewsModule.base', 'BreakingNews'),
-    'description' => Yii::t('ExampleModule.base', 'Show a breaking news popup on dashboard.'),
-    'author' => '',
-    'version' => '',
+    'description' => Yii::t('ExampleModule.base', 'Shows a breaking news popup on dashboard.'),
     'configRoute' => '//breakingnews/admin',
     'import' => array(
         'application.modules.breakingnews.*',

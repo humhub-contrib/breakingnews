@@ -5,7 +5,12 @@
             <h4 class="modal-title" id="myModalLabel"><?php echo $title; ?></h4>
         </div>
         <div class="modal-body">
-            <?php echo $message; ?>
+            <?php 
+            
+            $md = new CMarkdown;
+            echo $md->transform($message);
+
+            ?>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary"
@@ -13,7 +18,6 @@
         </div>
 
     </div>
-
 </div>
 
 

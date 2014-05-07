@@ -37,9 +37,9 @@ class AdminController extends Controller {
         Yii::import('breakingnews.forms.*');
 
         $form = new BreakingNewsEditForm;
-        $form->id = HSetting::Get('newsId', 'breakingnews');
         $form->title = HSetting::Get('title', 'breakingnews');
         $form->message = HSetting::GetText('message', 'breakingnews');
+        $form->active = HSetting::Get('active', 'breakingnews');
 
         // Ajax Check of Form
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'breakingnews-edit-form') {
@@ -55,10 +55,19 @@ class AdminController extends Controller {
 
             if ($form->validate()) {
 
-                HSetting::Set('newsId', $form->id, 'breakingnews');
                 HSetting::Set('title', $form->title, 'breakingnews');
                 HSetting::SetText('message', $form->message, 'breakingnews');
 
+                if ($form->active)
+                    HSetting::Set('active', true, 'breakingnews');
+                else
+                    HSetting::Set('active', false, 'breakingnews');
+                    
+                if ($form->reset) {
+                    foreach (UserSetting::model()->findAllByAttributes(array('name'=>'seen', 'module_id'=>'breakingnews')) as $userSetting) {
+                        $userSetting->delete();
+                    }
+                }
                 $this->redirect(Yii::app()->createUrl('breakingnews/admin/index'));
             }
         }

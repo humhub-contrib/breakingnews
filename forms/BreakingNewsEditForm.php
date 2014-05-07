@@ -2,16 +2,18 @@
 
 class BreakingNewsEditForm extends CFormModel {
 
-    public $id;
+    public $active;
     public $title;
     public $message;
+    public $reset;
 
     /**
      * Declares the validation rules.
      */
     public function rules() {
         return array(
-            array('id, title, message', 'required'),
+            array('title, message', 'required'),
+            array('reset, active', 'safe')
         );
     }
 
@@ -22,9 +24,10 @@ class BreakingNewsEditForm extends CFormModel {
      */
     public function attributeLabels() {
         return array(
-            'id' => Yii::t('BreakingNewsModule.base', 'Unique ID for News'),
+            'active' => Yii::t('BreakingNewsModule.base', 'Active'),
             'title' => Yii::t('BreakingNewsModule.base', 'Title'),
             'message' => Yii::t('BreakingNewsModule.base', 'Message'),
+            'reset' => Yii::t('BreakingNewsModule.base', 'Mark as unseen for all users'),
         );
     }
 

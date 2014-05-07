@@ -1,3 +1,0 @@
-
-- Store Seen not in Cookie instead in datbase
-- Let Admin Decide LightBox or in Sidebar
