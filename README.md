@@ -9,6 +9,10 @@ More informations at:
 
 
 # Changelog
+
+## 0.9.3
+* Added Module Image
+
 ## 0.9.2
 * CSS Fixes
 
