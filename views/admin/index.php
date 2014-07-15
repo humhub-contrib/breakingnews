@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-    <div class="panel-heading"><?php echo Yii::t('BreakingNewsModule.admin', 'Breaking News Configuration'); ?></div>
+    <div class="panel-heading"><?php echo Yii::t('BreakingNewsModule.views_admin_index', 'Breaking News Configuration'); ?></div>
     <div class="panel-body">
 
         <?php
@@ -28,7 +28,7 @@
             <?php echo $form->labelEx($model, 'message'); ?>
             <?php echo $form->textArea($model, 'message', array('rows' => 10, 'class' => 'form-control')); ?>
             <?php echo $form->error($model, 'message'); ?>
-            <p class="help-block"><?php echo Yii::t('BreakingNewsModule.admin', 'Note: You can use markdown syntax.'); ?></p>
+            <p class="help-block"><?php echo Yii::t('BreakingNewsModule.views_admin_index', 'Note: You can use markdown syntax.'); ?></p>
 
         </div>
 
@@ -42,8 +42,8 @@
 
         <hr>
 
-        <?php echo CHtml::submitButton(Yii::t('BreakingNewsModule.admin', 'Save'), array('class' => 'btn btn-primary')); ?>
-        <a class="btn btn-default" href="<?php echo $this->createUrl('//admin/module'); ?>"><?php echo Yii::t('AdminModule.base', 'Back to modules'); ?></a>
+        <?php echo CHtml::submitButton(Yii::t('BreakingNewsModule.views_admin_index', 'Save'), array('class' => 'btn btn-primary')); ?>
+        <a class="btn btn-default" href="<?php echo $this->createUrl('//admin/module'); ?>"><?php echo Yii::t('BreakingNewsModule.views_admin_index', 'Back to modules'); ?></a>
 
         <?php $this->endWidget(); ?>
 

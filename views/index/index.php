@@ -14,7 +14,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary"
-                    data-dismiss="modal"><?php echo Yii::t('base', 'Close'); ?></button>
+                    data-dismiss="modal"><?php echo Yii::t('BreakingNewsModule.views_index', 'Close'); ?></button>
         </div>
 
     </div>

@@ -24,10 +24,10 @@ class BreakingNewsEditForm extends CFormModel {
      */
     public function attributeLabels() {
         return array(
-            'active' => Yii::t('BreakingNewsModule.base', 'Active'),
-            'title' => Yii::t('BreakingNewsModule.base', 'Title'),
-            'message' => Yii::t('BreakingNewsModule.base', 'Message'),
-            'reset' => Yii::t('BreakingNewsModule.base', 'Mark as unseen for all users'),
+            'active' => Yii::t('BreakingNewsModule.forms_BreakingNewsEditForm', 'Active'),
+            'title' => Yii::t('BreakingNewsModule.forms_BreakingNewsEditForm', 'Title'),
+            'message' => Yii::t('BreakingNewsModule.forms_BreakingNewsEditForm', 'Message'),
+            'reset' => Yii::t('BreakingNewsModule.forms_BreakingNewsEditForm', 'Mark as unseen for all users'),
         );
     }
 
