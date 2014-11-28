@@ -1,7 +1,7 @@
 <?php
 return array (
-  'Active' => 'Actif',
-  'Mark as unseen for all users' => 'Marquer comme non vu pour tout le monde',
-  'Message' => 'Message',
-  'Title' => 'Titre',
+  'Active' => 'Actief',
+  'Mark as unseen for all users' => 'Markeren als ongelezen voor alle gebruikers',
+  'Message' => 'Bericht',
+  'Title' => 'Titel',
 );
