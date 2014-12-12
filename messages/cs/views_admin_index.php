@@ -1,7 +1,7 @@
 <?php
 return array (
-  'Back to modules' => 'Zpátky na moduly',
-  'Breaking News Configuration' => '',
-  'Note: You can use markdown syntax.' => '',
+  'Back to modules' => 'Zpět na přehled modulů',
+  'Breaking News Configuration' => 'Nastavení modulu Horká novinka',
+  'Note: You can use markdown syntax.' => 'Poznámka: můžete využít syntaxe markdown.',
   'Save' => 'Uložit',
 );
