@@ -3,5 +3,5 @@ return array (
   'Active' => '',
   'Mark as unseen for all users' => '',
   'Message' => '',
-  'Title' => 'Tiêu đề',
+  'Title' => '',
 );
