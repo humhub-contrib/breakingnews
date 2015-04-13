@@ -1,7 +1,7 @@
 <?php
 return array (
   'Back to modules' => 'Modüllere geri dön',
-  'Breaking News Configuration' => '',
-  'Note: You can use markdown syntax.' => '',
+  'Breaking News Configuration' => 'Son Dakika Haberleri Yapılandırma',
+  'Note: You can use markdown syntax.' => 'Not: Markdown söz dizimini kullanabilirsiniz.',
   'Save' => 'Kaydet',
 );
