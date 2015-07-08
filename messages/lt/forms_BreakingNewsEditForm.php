@@ -1,7 +1,7 @@
 <?php
 return array (
-  'Active' => '',
-  'Mark as unseen for all users' => '',
-  'Message' => '',
-  'Title' => '',
+  'Active' => 'Aktyvus',
+  'Mark as unseen for all users' => 'Pažymėti kaip neperskaitytus visiems vartotojams',
+  'Message' => 'Žinutė',
+  'Title' => 'Pavadinimas',
 );
