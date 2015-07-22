@@ -1,9 +1,13 @@
+<?php
+
+use yii\helpers\Url;
+?>
 <script type="text/javascript">
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         $('#globalModal').modal({
-            remote: '<?php echo Yii::app()->createUrl('//breakingnews/index'); ?>',
+            remote: '<?php echo Url::to(['/breakingnews/index']); ?>',
             show: true
         })
 

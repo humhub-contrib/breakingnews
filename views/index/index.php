@@ -1,3 +1,5 @@
+<?php ?>
+
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
@@ -5,16 +7,13 @@
             <h4 class="modal-title" id="myModalLabel"><?php echo $title; ?></h4>
         </div>
         <div class="modal-body">
-            <?php 
-            
-            $md = new CMarkdown;
-            echo $md->transform($message);
-
-            ?>
+<?php
+echo \yii\helpers\Markdown::process($message);
+?>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary"
-                    data-dismiss="modal"><?php echo Yii::t('BreakingNewsModule.views_index', 'Close'); ?></button>
+                    data-dismiss="modal"><?php echo Yii::t('BreakingnewsModule.views_index', 'Close'); ?></button>
         </div>
 
     </div>

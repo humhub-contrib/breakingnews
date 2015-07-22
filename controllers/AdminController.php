@@ -1,78 +1,46 @@
 <?php
 
-class AdminController extends Controller {
+namespace humhub\modules\breakingnews\controllers;
 
-    public $subLayout = "application.modules_core.admin.views._layout";
+use Yii;
+use yii\helpers\Url;
+use humhub\modules\admin\components\Controller;
+use humhub\models\Setting;
+use humhub\modules\breakingnews\models\EditForm;
 
-    /**
-     * @return array action filters
-     */
-    public function filters() {
-        return array(
-            'accessControl', // perform access control for CRUD operations
-        );
-    }
-
-    /**
-     * Specifies the access control rules.
-     * This method is used by the 'accessControl' filter.
-     * @return array access control rules
-     */
-    public function accessRules() {
-        return array(
-            array('allow',
-                'expression' => 'Yii::app()->user->isAdmin()',
-            ),
-            array('deny', // deny all users
-                'users' => array('*'),
-            ),
-        );
-    }
+class AdminController extends Controller
+{
 
     /**
      * Configuration Action for Super Admins
      */
-    public function actionIndex() {
+    public function actionIndex()
+    {
 
-        Yii::import('breakingnews.forms.*');
+        $form = new EditForm;
+        $form->title = Setting::Get('title', 'breakingnews');
+        $form->message = Setting::GetText('message', 'breakingnews');
+        $form->active = Setting::Get('active', 'breakingnews');
 
-        $form = new BreakingNewsEditForm;
-        $form->title = HSetting::Get('title', 'breakingnews');
-        $form->message = HSetting::GetText('message', 'breakingnews');
-        $form->active = HSetting::Get('active', 'breakingnews');
+        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+            Setting::Set('title', $form->title, 'breakingnews');
+            Setting::SetText('message', $form->message, 'breakingnews');
 
-        // Ajax Check of Form
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'breakingnews-edit-form') {
-            echo CActiveForm::validate($form);
-            Yii::app()->end();
-        }
+            if ($form->active)
+                Setting::Set('active', true, 'breakingnews');
+            else
+                Setting::Set('active', false, 'breakingnews');
 
-        // Form Submitted
-        if (isset($_POST['BreakingNewsEditForm'])) {
-            // Allow Super Admins to inject HTML here
-            //$_POST['BreakingNewsEditForm'] = Yii::app()->input->stripClean($_POST['BreakingNewsEditForm']);
-            $form->attributes = $_POST['BreakingNewsEditForm'];
-
-            if ($form->validate()) {
-
-                HSetting::Set('title', $form->title, 'breakingnews');
-                HSetting::SetText('message', $form->message, 'breakingnews');
-
-                if ($form->active)
-                    HSetting::Set('active', true, 'breakingnews');
-                else
-                    HSetting::Set('active', false, 'breakingnews');
-                    
-                if ($form->reset) {
-                    foreach (UserSetting::model()->findAllByAttributes(array('name'=>'seen', 'module_id'=>'breakingnews')) as $userSetting) {
-                        $userSetting->delete();
-                    }
+            if ($form->reset) {
+                foreach (\humhub\modules\user\models\Setting::findAll(array('name' => 'seen', 'module_id' => 'breakingnews')) as $userSetting) {
+                    $userSetting->delete();
                 }
-                $this->redirect(Yii::app()->createUrl('breakingnews/admin/index'));
             }
+
+            return $this->redirect(Url::to(['/breakingnews/admin/index']));
         }
 
-        $this->render('index', array('model' => $form));
+        return $this->render('index', ['model' => $form]);
     }
 
 }
