@@ -22,21 +22,7 @@ class AdminController extends Controller
         $form->message = Setting::GetText('message', 'breakingnews');
         $form->active = Setting::Get('active', 'breakingnews');
 
-        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
-            Setting::Set('title', $form->title, 'breakingnews');
-            Setting::SetText('message', $form->message, 'breakingnews');
-
-            if ($form->active)
-                Setting::Set('active', true, 'breakingnews');
-            else
-                Setting::Set('active', false, 'breakingnews');
-
-            if ($form->reset) {
-                foreach (\humhub\modules\user\models\Setting::findAll(array('name' => 'seen', 'module_id' => 'breakingnews')) as $userSetting) {
-                    $userSetting->delete();
-                }
-            }
-
+        if ($form->load(Yii::$app->request->post()) && $form->validate() && $form->save()) {
             return $this->redirect(Url::to(['/breakingnews/admin/index']));
         }
 

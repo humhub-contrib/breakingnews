@@ -4,7 +4,6 @@ namespace humhub\modules\breakingnews;
 
 use Yii;
 use yii\helpers\Url;
-use humhub\models\Setting;
 
 class Module extends \humhub\components\Module
 {
@@ -20,10 +19,26 @@ class Module extends \humhub\components\Module
             return;
         }
 
-        if (Setting::Get('active', 'breakingnews') && \humhub\modules\user\models\Setting::Get(Yii::$app->user->id, 'seen', 'breakingnews') != 1) {
-            \humhub\modules\user\models\Setting::Set(Yii::$app->user->id, 'seen', true, 'breakingnews');
+        $module = Yii::$app->getModule('breakingnews');
+        
+        if (self::showBreakingNews()) {
+            // Set the new timestamp
+            $module->settings->user()->set('timestamp', $module->settings->get('timestamp'));
             $event->sender->addWidget(widgets\BreakingNewsWidget::className(), array(), array('sortOrder' => 1));
         }
+    }
+    
+    public static function showBreakingNews()
+    {
+        $module = Yii::$app->getModule('breakingnews');
+        if(!$module->settings->get('active')) {
+            return false;
+        }
+        
+        $lastSeenTS = $module->settings->user()->get('timestamp');
+        $currentNewsTS = $module->settings->get('timestamp');
+        
+        return $currentNewsTS != null && $lastSeenTS != $currentNewsTS;
     }
 
     public function getConfigUrl()

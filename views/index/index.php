@@ -3,9 +3,7 @@
     <h4 class="modal-title" id="myModalLabel"><?php echo $title; ?></h4>
 </div>
 <div class="modal-body">
-    <?php
-    echo \yii\helpers\Markdown::process($message);
-    ?>
+    <?php echo humhub\widgets\MarkdownView::widget(array('markdown' => $message)); ?>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-primary"

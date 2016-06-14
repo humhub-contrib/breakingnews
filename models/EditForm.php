@@ -37,5 +37,26 @@ class EditForm extends \yii\base\Model
             'reset' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Mark as unseen for all users'),
         );
     }
+    
+    /**
+     * Saves the given form settings.
+     */
+    public function save()
+    {
+        $module = Yii::$app->getModule('breakingnews');
+        $module->settings->set('title', $this->title);
+        $module->settings->set('message', $this->message);
+
+        if ($this->active) {
+            $module->settings->set('active', true);
+        } else {
+            $module->settings->set('active', false);
+        }
+              
+        $lastTimeStamp = $module->settings->get('timestamp');
+        if ($this->reset || $lastTimeStamp == null) {
+            $module->settings->set('timestamp', time());
+        }
+    }
 
 }
