@@ -8,6 +8,6 @@ new humhub\components\Application($config);
 
 $cfg = \Codeception\Configuration::config();
 
-if(!empty($cfg['humhubModules'])) {
-    Yii::$app->moduleManager->enableModules($cfg['humhubModules']);
+if(!empty($cfg['humhub_modules'])) {
+    Yii::$app->moduleManager->enableModules($cfg['humhub_modules']);
 }

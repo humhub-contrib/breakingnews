@@ -13,6 +13,17 @@ class EditForm extends \yii\base\Model
     public $reset;
 
     /**
+     * @inheritdocs
+     */
+    public function init()
+    {
+        $settings = Yii::$app->getModule('breakingnews')->settings;
+        $this->title = $settings->get('title');
+        $this->message = $settings->get('message');
+        $this->active = $settings->get('active');
+    }
+    
+    /**
      * Declares the validation rules.
      */
     public function rules()

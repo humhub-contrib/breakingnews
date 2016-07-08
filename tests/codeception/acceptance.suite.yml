@@ -20,5 +20,6 @@ modules:
             url: http://localhost:8080/
         WebDriver:
             url: http://localhost:8080/
-            browser: chrome
-            restart: false
+            browser: phantomjs
+            window_size: 1024x768
+            lang: en

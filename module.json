@@ -3,7 +3,7 @@
     "name": "Breaking News",
     "description": "Shows a breaking news layer on dashboard.",
     "keywords": ["news", "dashboard", "popup"],
-    "version": "1.0.1",
+    "version": "1.0.2",
     "humhub": {
         "minVersion": "1.1"
     }

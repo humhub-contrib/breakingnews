@@ -4,7 +4,7 @@
  */
 return [
     'params' => [
-        'moduleAutoloadPaths' => ['D:\codebase\humhub\modules'],
+        'moduleAutoloadPaths' => ['/codebase/humhub/modules'],
         'allowedLanguages' => ['en']
     ]
 ];

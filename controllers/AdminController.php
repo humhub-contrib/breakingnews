@@ -17,11 +17,8 @@ class AdminController extends Controller
     public function actionIndex()
     {
 
-        $form = new EditForm;
-        $form->title = Setting::Get('title', 'breakingnews');
-        $form->message = Setting::GetText('message', 'breakingnews');
-        $form->active = Setting::Get('active', 'breakingnews');
-
+        $form = new EditForm();
+        
         if ($form->load(Yii::$app->request->post()) && $form->validate() && $form->save()) {
             return $this->redirect(Url::to(['/breakingnews/admin/index']));
         }
