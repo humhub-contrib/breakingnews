@@ -19,13 +19,12 @@ class AdminController extends Controller
 
         $form = new EditForm();
         
-        if ($form->load(Yii::$app->request->post()) && $form->validate() && $form->save()) {
-            return $this->redirect(Url::to(['/breakingnews/admin/index']));
+        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+            $form->save();
+            return $this->refresh();
         }
 
         return $this->render('index', ['model' => $form]);
     }
 
 }
-
-?>
