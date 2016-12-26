@@ -1,4 +1,4 @@
 <?php
 return array (
-  'Close' => ' Fermer',
+  'Close' => ' Sluiten',
 );
