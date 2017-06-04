@@ -1,7 +1,7 @@
 <?php
 return array (
   'Back to modules' => 'Kembali ke modul',
-  'Breaking News Configuration' => '',
-  'Note: You can use markdown syntax.' => '',
+  'Breaking News Configuration' => 'Pengaturan Kabar terbaru ',
+  'Note: You can use markdown syntax.' => 'Catatan: Kamu dapat menggunakan markdown syntax',
   'Save' => 'Simpan',
 );
