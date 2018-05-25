@@ -1,7 +1,7 @@
 <?php
 return array (
-  'Back to modules' => 'Zpět k modulům',
+  'Back to modules' => 'Tornar ta os modulos',
   'Breaking News Configuration' => '',
   'Note: You can use markdown syntax.' => '',
-  'Save' => 'Uložit',
+  'Save' => 'Alzar',
 );

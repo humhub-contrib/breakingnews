@@ -1,7 +1,7 @@
 <?php
 return array (
-  'Active' => 'Aktivovat',
-  'Mark as unseen for all users' => 'Označit jako nepřečtené pro všechny uživatele',
-  'Message' => 'Zpráva',
-  'Title' => 'Titulek',
+  'Active' => 'Activo',
+  'Mark as unseen for all users' => 'Marcar como no visto pa totz os usuarios',
+  'Message' => 'Mensache',
+  'Title' => 'Títol',
 );
