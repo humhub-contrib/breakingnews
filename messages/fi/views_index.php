@@ -1,5 +1,4 @@
 <?php
-
-return [
-    'Close' => '',
-];
+return array (
+  'Close' => 'Sulje',
+);
