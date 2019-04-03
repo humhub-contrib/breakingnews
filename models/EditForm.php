@@ -2,6 +2,8 @@
 
 namespace humhub\modules\breakingnews\models;
 
+use humhub\models\ModuleEnabled;
+use humhub\modules\file\components\FileManager;
 use Yii;
 
 class EditForm extends \yii\base\Model
@@ -54,6 +56,10 @@ class EditForm extends \yii\base\Model
      */
     public function save()
     {
+        if(!$this->validate()) {
+            return false;
+        }
+
         $module = Yii::$app->getModule('breakingnews');
         $module->settings->set('title', $this->title);
         $module->settings->set('message', $this->message);
@@ -68,6 +74,14 @@ class EditForm extends \yii\base\Model
         if ($this->reset || $lastTimeStamp == null) {
             $module->settings->set('timestamp', time());
         }
+
+        $module = ModuleEnabled::findOne(['module_id' => 'breakingnews']);
+
+        if($module) {
+            (new FileManager(['record' => $module]))->attach(Yii::$app->request->post('fileUploaderHiddenGuidField'));
+        }
+
+        return true;
     }
 
 }
