@@ -2,6 +2,6 @@
 return array (
   'Active' => '',
   'Mark as unseen for all users' => '',
-  'Message' => '',
+  'Message' => 'Tin nhắn',
   'Title' => 'Tiêu đề',
 );
