@@ -1,7 +1,7 @@
 <?php
 return array (
-  'Active' => '',
-  'Mark as unseen for all users' => '',
+  'Active' => 'Ενεργός',
+  'Mark as unseen for all users' => 'Σημειώστε ως αόρατο για όλους τους χρήστες',
   'Message' => 'Μήνυμα',
   'Title' => 'Τίτλος',
 );
