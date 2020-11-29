@@ -1,7 +1,7 @@
 <?php
 return array (
   'Back to modules' => 'Върни се при модулите',
-  'Breaking News Configuration' => '',
-  'Note: You can use markdown syntax.' => '',
+  'Breaking News Configuration' => 'Конфигуриране на актуални новини',
+  'Note: You can use markdown syntax.' => 'Забележка: Можете да използвате маркдаун синтаксис.',
   'Save' => 'Запази',
 );
