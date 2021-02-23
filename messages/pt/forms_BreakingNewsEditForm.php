@@ -1,7 +1,7 @@
 <?php
 return array (
   'Active' => 'Activado',
-  'Mark as unseen for all users' => 'Marcar como invisível para todos os utilizadores',
+  'Mark as unseen for all users' => 'Marcar como invisível para todas as pessoas',
   'Message' => 'Mensagem',
   'Title' => 'Título',
 );
