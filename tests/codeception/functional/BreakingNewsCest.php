@@ -41,7 +41,7 @@ class BreakingNewsCest
         $I->expect('not to see the breaking news');
         $I->dontSeeBreakingNews();
         
-        $I->amGoingTo('actite the news form');
+        $I->amGoingTo('activate the news form');
         $form->active = true;
         $form->save();
         $I->expectTo('see the breaking news');
