@@ -2,6 +2,7 @@
 
 namespace tests\codeception\unit\modules\breakingnews;
 
+use humhub\modules\breakingnews\Module;
 use Yii;
 use tests\codeception\_support\HumHubDbTestCase;
 use Codeception\Specify;
@@ -11,8 +12,13 @@ class BreakingNewsFormTest extends HumHubDbTestCase
 {
 
     use Specify;
-    
-    protected function setUp()
+
+    /**
+     * @var Module
+     */
+    var $module;
+
+    protected function setUp(): void
     {
         parent::setUp();
         $this->module = Yii::$app->getModule('breakingnews');

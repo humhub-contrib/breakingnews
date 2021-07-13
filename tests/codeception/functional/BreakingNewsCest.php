@@ -3,11 +3,17 @@
 namespace breakingnews\functional;
 
 use breakingnews\FunctionalTester;
+use humhub\modules\breakingnews\Module;
 use Yii;
 use humhub\modules\breakingnews\models\EditForm;
 
 class BreakingNewsCest
 {
+
+    /**
+     * @var Module
+     */
+    var $module;
 
     public function _before()
     {

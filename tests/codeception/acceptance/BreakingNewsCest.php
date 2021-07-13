@@ -1,7 +1,6 @@
 <?php
 namespace breakingnews\acceptance;
 
-
 use breakingnews\AcceptanceTester;
 
 class BreakingNewsCest
@@ -12,14 +11,14 @@ class BreakingNewsCest
         $I->amAdmin();
         $I->wantToTest('the creation of news');
         $I->amGoingTo('submit a the news item');
-        $I->amOnPage('index-test.php?r=breakingnews/admin/index');
+        $I->amOnRoute(['/breakingnews/admin/index']);
         $I->expectTo('See the module configuration page');
         $I->see('Breaking News Configuration');
-        
-        $I->click('/html/body/div[3]/div/div[2]/div/div[2]/form/div[2]/div/label/div'); // Active
+
+        $I->click('[for="editform-active"]'); // Active
         $I->fillField('EditForm[title]', 'Test title');
         $I->fillField('EditForm[message]', 'Test message');
-        $I->click('/html/body/div[3]/div/div[2]/div/div[2]/form/div[6]/div/label/div'); // Reset
+        $I->click('[for="editform-reset"]'); // Mark as unseen for all users
         $I->click('Save');
         $I->wait(3);
         $I->expectTo('see no errors');
@@ -35,7 +34,7 @@ class BreakingNewsCest
         $I->see('Test message');
         
         $I->amGoingTo('test if the message disappears after page refresh');
-        $I->amOnPage('index-test.php');
+        $I->amOnRoute(['/']);
         $I->wait(5);
         $I->dontSee('Test title');
         $I->dontSee('Test message');
