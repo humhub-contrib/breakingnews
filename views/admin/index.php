@@ -15,7 +15,7 @@ use yii\helpers\Url;
 
         <div class="form-group">
             <div class="checkbox">
-                <label>
+                <label for="editform-active">
                     <?php echo $form->checkBox($model, 'active'); ?> <?php echo $model->getAttributeLabel('active'); ?>
                 </label>
             </div>
@@ -32,7 +32,7 @@ use yii\helpers\Url;
 
         <div class="form-group">
             <div class="checkbox">
-                <label>
+                <label for="editform-reset">
                     <?php echo $form->checkBox($model, 'reset'); ?> <?php echo $model->getAttributeLabel('reset'); ?>
                 </label>
             </div>
