@@ -1,49 +1,30 @@
 <?php
 
-use humhub\compat\CActiveForm;
-use yii\helpers\Html;
-use yii\helpers\Url;
+use humhub\modules\breakingnews\models\EditForm;
+use humhub\modules\content\widgets\richtext\RichTextField;
+use humhub\modules\ui\form\widgets\ActiveForm;
+use humhub\widgets\Button;
+
+/* @var EditForm $model */
 ?>
 <div class="panel panel-default">
-    <div class="panel-heading"><?php echo Yii::t('BreakingnewsModule.views_admin_index', 'Breaking News Configuration'); ?></div>
+    <div class="panel-heading"><?= Yii::t('BreakingnewsModule.views_admin_index', 'Breaking News Configuration') ?></div>
     <div class="panel-body">
 
-        <?php $form = CActiveForm::begin(); ?>
+        <?php $form = ActiveForm::begin() ?>
 
-        <?php echo $form->errorSummary($model); ?>
-
-
-        <div class="form-group">
-            <div class="checkbox">
-                <label for="editform-active">
-                    <?php echo $form->checkBox($model, 'active'); ?> <?php echo $model->getAttributeLabel('active'); ?>
-                </label>
-            </div>
-        </div>
-        <?php echo $form->field($model, 'title', ['inputOptions' =>['class' => 'form-control']]); ?>
-        <?php echo $form->error($model, 'title'); ?>
-        <div class="form-group">
-             <?php echo $form->field($model, 'message', ['inputOptions' => ['class' => 'form-control', 'id' => 'newMessageText']])->textarea(); ?>
-             <?php echo \humhub\widgets\MarkdownEditor::widget(array('fieldId' => 'newMessageText')); ?>
-             <?php echo $form->error($model, 'message'); ?>
-            <p class="help-block"><?php echo Yii::t('BreakingnewsModule.views_admin_index', 'Note: You can use markdown syntax.'); ?></p>
-
-        </div>
-
-        <div class="form-group">
-            <div class="checkbox">
-                <label for="editform-reset">
-                    <?php echo $form->checkBox($model, 'reset'); ?> <?php echo $model->getAttributeLabel('reset'); ?>
-                </label>
-            </div>
-        </div>
+        <?= $form->field($model, 'active')->checkbox() ?>
+        <?= $form->field($model, 'title') ?>
+        <?= $form->field($model, 'message')->widget(RichTextField::class) ?>
+        <?= $form->field($model, 'reset')->checkbox() ?>
 
         <hr>
 
-        <?php echo Html::submitButton(Yii::t('BreakingnewsModule.views_admin_index', 'Save'), array('class' => 'btn btn-primary')); ?>
-        <a class="btn btn-default" href="<?php echo Url::to(['/admin/module']); ?>"><?php echo Yii::t('BreakingnewsModule.views_admin_index', 'Back to modules'); ?></a>
+        <?= Button::save()->submit() ?>
+        <?= Button::defaultType(Yii::t('BreakingnewsModule.views_admin_index', 'Back to modules'))
+            ->link(['/admin/module']) ?>
 
-        <?php CActiveForm::end(); ?>
+        <?php ActiveForm::end() ?>
 
     </div>
 </div>
