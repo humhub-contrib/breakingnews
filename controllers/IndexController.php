@@ -3,7 +3,7 @@
 namespace humhub\modules\breakingnews\controllers;
 
 use humhub\components\Controller;
-use humhub\models\Setting;
+use humhub\modules\breakingnews\models\Setting;
 
 /**
  * Description of IndexController
@@ -20,12 +20,10 @@ class IndexController extends Controller
      */
     public function actionIndex()
     {
-        return $this->renderAjax('index', array(
-                    'title' => Setting::Get('title', 'breakingnews'),
-                    'message' => Setting::GetText('message', 'breakingnews')
-        ));
+        return $this->renderAjax('index', [
+            'title' => Setting::get('title'),
+            'message' => Setting::get('message'),
+        ]);
     }
 
 }
-
-?>

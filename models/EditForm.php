@@ -2,12 +2,17 @@
 
 namespace humhub\modules\breakingnews\models;
 
-use humhub\models\ModuleEnabled;
-use humhub\modules\file\components\FileManager;
+use humhub\modules\breakingnews\Module;
+use humhub\modules\content\widgets\richtext\RichText;
 use Yii;
+use yii\base\Model;
 
-class EditForm extends \yii\base\Model
+class EditForm extends Model
 {
+    /**
+     * @var Module $module
+     */
+    private $module;
 
     public $active;
     public $title;
@@ -15,70 +20,71 @@ class EditForm extends \yii\base\Model
     public $reset;
 
     /**
-     * @inheritdocs
+     * @inheritdoc
      */
     public function init()
     {
-        $settings = Yii::$app->getModule('breakingnews')->settings;
-        $this->title = $settings->get('title');
-        $this->message = $settings->get('message');
-        $this->active = $settings->get('active');
+        $this->module = Yii::$app->getModule('breakingnews');
+
+        $this->title = $this->module->settings->get('title');
+        $this->message = $this->module->settings->get('message');
+        $this->active = $this->module->settings->get('active');
     }
     
     /**
-     * Declares the validation rules.
+     * @inheritdoc
      */
     public function rules()
     {
-        return array(
-            array(['title', 'message'], 'required'),
-            array(['reset', 'active'], 'safe')
-        );
+        return [
+            [['title', 'message'], 'required'],
+            [['reset', 'active'], 'safe'],
+        ];
     }
 
     /**
-     * Declares customized attribute labels.
-     * If not declared here, an attribute would have a label that is
-     * the same as its name with the first letter in upper case.
+     * @inheritdoc
      */
     public function attributeLabels()
     {
-        return array(
+        return [
             'active' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Active'),
             'title' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Title'),
             'message' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Message'),
             'reset' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Mark as unseen for all users'),
-        );
+        ];
     }
-    
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeHints()
+    {
+        return [
+            'message' => Yii::t('BreakingnewsModule.views_admin_index', 'Note: You can use markdown syntax.'),
+        ];
+    }
+
     /**
      * Saves the given form settings.
      */
-    public function save()
+    public function save(): bool
     {
-        if(!$this->validate()) {
+        if (!$this->validate()) {
             return false;
         }
 
-        $module = Yii::$app->getModule('breakingnews');
-        $module->settings->set('title', $this->title);
-        $module->settings->set('message', $this->message);
+        $this->module->settings->set('title', $this->title);
+        $this->module->settings->set('message', $this->message);
+        $this->module->settings->set('active', $this->active);
 
-        if ($this->active) {
-            $module->settings->set('active', true);
-        } else {
-            $module->settings->set('active', false);
-        }
-              
-        $lastTimeStamp = $module->settings->get('timestamp');
+        $lastTimeStamp = $this->module->settings->get('timestamp');
         if ($this->reset || $lastTimeStamp == null) {
-            $module->settings->set('timestamp', time());
+            $this->module->settings->set('timestamp', time());
         }
 
-        $module = ModuleEnabled::findOne(['module_id' => 'breakingnews']);
-
-        if($module) {
-            (new FileManager(['record' => $module]))->attach(Yii::$app->request->post('fileUploaderHiddenGuidField'));
+        if ($setting = Setting::findByName('message')) {
+            RichText::postProcess($this->message, $setting);
         }
 
         return true;

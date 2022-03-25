@@ -2,12 +2,10 @@
 
 namespace humhub\modules\breakingnews\controllers;
 
-use humhub\modules\file\components\FileManager;
+use humhub\modules\admin\components\Controller;
+use humhub\modules\breakingnews\models\EditForm;
 use Yii;
 use yii\helpers\Url;
-use humhub\modules\admin\components\Controller;
-use humhub\models\ModuleEnabled;
-use humhub\modules\breakingnews\models\EditForm;
 
 class AdminController extends Controller
 {
@@ -17,7 +15,6 @@ class AdminController extends Controller
      */
     public function actionIndex()
     {
-
         $form = new EditForm();
         
         if ($form->load(Yii::$app->request->post()) && $form->validate() && $form->save()) {
@@ -29,5 +26,3 @@ class AdminController extends Controller
     }
 
 }
-
-?>
