@@ -17,7 +17,7 @@ class BreakingNewsCest
 
         $I->click('[for="editform-active"]'); // Active
         $I->fillField('EditForm[title]', 'Test title');
-        $I->fillField('EditForm[message]', 'Test message');
+        $I->fillField('#editform-message .humhub-ui-richtext', 'Test message');
         $I->click('[for="editform-reset"]'); // Mark as unseen for all users
         $I->click('Save');
         $I->wait(3);

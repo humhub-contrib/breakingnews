@@ -21,3 +21,6 @@ modules:
       restart: true
       window_size: 1920x1200
       port: 4444
+      capabilities:
+        chromeOptions:
+          args: ["--lang=en-US"]
