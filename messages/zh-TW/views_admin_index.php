@@ -1,7 +1,7 @@
 <?php
-return array (
-  'Back to modules' => '',
-  'Breaking News Configuration' => '',
-  'Note: You can use markdown syntax.' => '',
-  'Save' => '儲存',
-);
+
+return [
+    'Back to modules' => '',
+    'Breaking News Configuration' => '',
+    'Note: You can use markdown syntax.' => '',
+];

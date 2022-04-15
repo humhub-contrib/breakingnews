@@ -1,7 +1,7 @@
 <?php
-return array (
-  'Back to modules' => 'Tillbaka till moduler',
-  'Breaking News Configuration' => 'Inställningar för Senaste nytt',
-  'Note: You can use markdown syntax.' => 'Obs: du kan använda markdown syntax',
-  'Save' => 'Spara',
-);
+
+return [
+    'Back to modules' => 'Tillbaka till moduler',
+    'Breaking News Configuration' => 'Inställningar för Senaste nytt',
+    'Note: You can use markdown syntax.' => 'Obs: du kan använda markdown syntax',
+];
