@@ -15,6 +15,5 @@ jobs:
     uses: humhub/actions/.github/workflows/module-tests.yml@main
     with:
       module-id: breakingnews
-      php:
-        - "7.4"
-        - "8.0"
+      php: >-
+        ['7.4', '8.0']
