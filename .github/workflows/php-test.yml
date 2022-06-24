@@ -1,5 +1,15 @@
 name: PHP Codeception Tests
 
+on:
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+    branches:
+      - master
+      - develop
+
 jobs:
   tests:
     uses: humhub/actions/.github/workflows/module-tests.yml@main
