@@ -1,0 +1,9 @@
+name: PHP Codeception Tests - develop
+
+on: push
+
+jobs:
+  tests:
+    uses: humhub/actions/.github/workflows/module-tests-develop.yml@main
+    with:
+      module-id: breakingnews
