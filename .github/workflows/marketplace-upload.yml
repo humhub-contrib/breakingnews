@@ -8,3 +8,4 @@ name: Upload to HumHub Marketplace
 jobs:
   build:
     uses: humhub/actions/.github/workflows/module-marketplace-upload.yml@main
+    secrets: inherit
