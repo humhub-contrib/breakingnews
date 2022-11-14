@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Unreleased
+-------------------------
+- Enh #20: Display breaking news to only the members of certain groups
+
+
 1.0.7 (November 14, 2022)
 -------------------------
 - Enh #24: Show breaking news on any page (not only the dashboard)
