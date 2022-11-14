@@ -15,12 +15,9 @@ class Events
      */
     public static function onLayoutAddonsBeforeRun($event)
     {
-        if (Yii::$app->user->isGuest) {
-            return;
-        }
-
         if (Module::showBreakingNews()) {
             // Set the new timestamp
+            /** @var Module $module */
             $module = Yii::$app->getModule('breakingnews');
             $module->settings->user()->set('timestamp', $module->settings->get('timestamp'));
             $event->sender->addWidget(BreakingNewsWidget::class, [], ['sortOrder' => 1]);

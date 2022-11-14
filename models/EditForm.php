@@ -15,6 +15,7 @@ class EditForm extends Model
     private $module;
 
     public $active;
+    public $activeGroups;
     public $title;
     public $message;
     public $reset;
@@ -29,8 +30,9 @@ class EditForm extends Model
         $this->title = $this->module->settings->get('title');
         $this->message = $this->module->settings->get('message');
         $this->active = $this->module->settings->get('active');
+        $this->activeGroups = $this->module->settings->getSerialized('activeGroups');
     }
-    
+
     /**
      * @inheritdoc
      */
@@ -38,7 +40,7 @@ class EditForm extends Model
     {
         return [
             [['title', 'message'], 'required'],
-            [['reset', 'active'], 'safe'],
+            [['reset', 'active', 'activeGroups'], 'safe'],
         ];
     }
 
@@ -49,6 +51,7 @@ class EditForm extends Model
     {
         return [
             'active' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Active'),
+            'activeGroups' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Groups whose members will see this breaking news'),
             'title' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Title'),
             'message' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Message'),
             'reset' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Mark as unseen for all users'),
@@ -61,6 +64,7 @@ class EditForm extends Model
     public function attributeHints()
     {
         return [
+            'activeGroups' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'If no group is ticked, everyone will see this breaking news.'),
             'message' => Yii::t('BreakingnewsModule.views_admin_index', 'Note: You can use markdown syntax.'),
         ];
     }
@@ -77,6 +81,7 @@ class EditForm extends Model
         $this->module->settings->set('title', $this->title);
         $this->module->settings->set('message', $this->message);
         $this->module->settings->set('active', $this->active);
+        $this->module->settings->setSerialized('activeGroups', $this->activeGroups);
 
         $lastTimeStamp = $this->module->settings->get('timestamp');
         if ($this->reset || $lastTimeStamp == null) {
