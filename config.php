@@ -1,13 +1,15 @@
 <?php
 
-use humhub\modules\dashboard\widgets\Sidebar;
+use humhub\modules\breakingnews\Events;
+use humhub\widgets\LayoutAddons;
 
+/** @noinspection MissedFieldInspection */
 return [
     'id' => 'breakingnews',
-    'class' => 'humhub\modules\breakingnews\Module',
+    'class' => humhub\modules\breakingnews\Module::class,
     'namespace' => 'humhub\modules\breakingnews',
     'events' => [
-        ['class' => Sidebar::className(), 'event' => Sidebar::EVENT_INIT, 'callback' => ['humhub\modules\breakingnews\Module', 'onDashboardSidebarInit']],
+        ['class' => LayoutAddons::class, 'event' => LayoutAddons::EVENT_BEFORE_RUN, 'callback' => [Events::class, 'onLayoutAddonsBeforeRun']],
     ],
 ];
 ?>
