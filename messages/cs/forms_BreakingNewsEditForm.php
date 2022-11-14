@@ -1,7 +1,10 @@
 <?php
-return array (
-  'Active' => 'Aktivovat',
-  'Mark as unseen for all users' => 'Označit jako nepřečtené pro všechny uživatele',
-  'Message' => 'Zpráva',
-  'Title' => 'Nadpis',
-);
+
+return [
+    'Active' => 'Aktivovat',
+    'Mark as unseen for all users' => 'Označit jako nepřečtené pro všechny uživatele',
+    'Message' => 'Zpráva',
+    'Title' => 'Nadpis',
+    'Groups whose members will see this breaking news' => '',
+    'If no group is ticked, everyone will see this breaking news.' => '',
+];

@@ -1,7 +1,10 @@
 <?php
-return array (
-  'Active' => '',
-  'Mark as unseen for all users' => '',
-  'Message' => '',
-  'Title' => 'Titulli',
-);
+
+return [
+    'Title' => 'Titulli',
+    'Active' => '',
+    'Groups whose members will see this breaking news' => '',
+    'If no group is ticked, everyone will see this breaking news.' => '',
+    'Mark as unseen for all users' => '',
+    'Message' => '',
+];
