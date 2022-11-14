@@ -1,19 +1,3 @@
-## Description
+# Breaking News
 
-Popups a breaking news lightbox on dashboard. The message can be set by all admins
-in markdown syntax language.
-
-v1.1.1
-    - Enhanced markdown editor
-
-__Module website:__ <https://github.com/humhub/humhub-modules-breakingnews>
-__Author:__ luke, andystrobel  
-__Author website:__ [humhub.org](http://humhub.org)
-
-## Changelog
-
-<https://github.com/humhub/humhub-modules-breakingnews/commits/master>
-
-## Bugtracker
-
-<https://github.com/humhub/humhub-modules-breakingnews/issues>
+The Breaking News module allows administrators to create a popup notice in form of a lightbox. The lightbox is displayed directly after login. This way, very important information can be prominently displayed to users. In addition, the module allows different messages to be delivered to different user groups. This enables the targeted delivery of information to the user groups that are really supposed to receive it. 
