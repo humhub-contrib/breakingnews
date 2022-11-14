@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.6 (November 14, 2022)
+1.0.7 (November 14, 2022)
 -------------------------
 - Enh #24: Show breaking news on any page (not only the dashboard)
 
