@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.0.9 (Unreleased)
+-------------------------
+- Fix #27: Hide news window on must change password page
+
 1.0.8 (November 14, 2022)
 -------------------------
 - Enh #20: Display breaking news to only the members of certain groups
