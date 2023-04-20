@@ -2,6 +2,7 @@
 
 namespace humhub\modules\breakingnews;
 
+use humhub\modules\user\controllers\MustChangePasswordController;
 use Yii;
 use yii\helpers\Url;
 
@@ -13,6 +14,10 @@ class Module extends \humhub\components\Module
     public static function showBreakingNews()
     {
         if (Yii::$app->user->isGuest) {
+            return false;
+        }
+
+        if (Yii::$app->controller->layout === '@humhub/modules/user/views/layouts/main') {
             return false;
         }
 
