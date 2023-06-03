@@ -23,7 +23,7 @@ class Module extends \humhub\components\Module
 
         /** @var Module $module */
         $module = Yii::$app->getModule('breakingnews');
-        if (!$module->settings->get('active')) {
+        if ($module === null || !$module->settings->get('active')) {
             return false;
         }
 
