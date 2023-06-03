@@ -1,9 +1,10 @@
 Changelog
 =========
 
-1.0.9 (Unreleased)
--------------------------
+1.0.9 (June 3, 2023)
+--------------------
 - Fix #27: Hide news window on must change password page
+- Fix #28: Crash on Module Administration page when Breaking news module is installed but not active
 
 1.0.8 (November 14, 2022)
 -------------------------
