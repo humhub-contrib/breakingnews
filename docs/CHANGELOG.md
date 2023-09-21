@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.0.10 - Unreleased
+-----------------------
+- Enh #29: Tests for `next` version
+
 1.0.9 (June 3, 2023)
 --------------------
 - Fix #27: Hide news window on must change password page
