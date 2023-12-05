@@ -17,7 +17,7 @@ class Module extends \humhub\components\Module
             return false;
         }
 
-        if (Yii::$app->controller->layout === '@humhub/modules/user/views/layouts/main') {
+        if (!Yii::$app->request->isConsoleRequest && Yii::$app->controller->layout === '@humhub/modules/user/views/layouts/main') {
             return false;
         }
 
