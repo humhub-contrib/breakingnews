@@ -1,4 +1,4 @@
-name: PHP Codeception Tests - v1.12
+name: PHP Codeception Tests - v1.13
 
 on:
   push:
@@ -7,6 +7,6 @@ on:
 
 jobs:
   tests:
-    uses: humhub/actions/.github/workflows/module-tests-v1.12.yml@main
+    uses: humhub/actions/.github/workflows/module-tests-v1.13.yml@main
     with:
       module-id: breakingnews
