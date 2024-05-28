@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.1.0 - Unreleased
+-----------------------
+- Fix #32: Update module resources path
+
 1.0.10 - Unreleased
 -----------------------
 - Enh #29: Tests for `next` version
