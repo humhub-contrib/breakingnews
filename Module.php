@@ -27,6 +27,15 @@ class Module extends \humhub\components\Module
             return false;
         }
 
+        if ($expires = $module->settings->get('expiresAt')) {
+            $now = new \DateTime('now', new \DateTimeZone('UTC'));
+            $expires = new \DateTime($expires, new \DateTimeZone('UTC'));
+
+            if ($expires < $now) {
+                return false;
+            }
+        }
+
         // Check group restrictions
         $activeGroups = $module->settings->getSerialized('activeGroups');
         // If no group is ticked, everyone will see this breaking news
