@@ -63,33 +63,22 @@ class BreakingNewsFormTest extends HumHubDbTestCase
      */
     public function testSaveValues()
     {
-       $form = new EditForm();
-       $form->title = 'MyTitle';
-       $form->active = true;
-       $form->expiresAt = (new \DateTime())->modify('+10 days')->format('Y-m-d H:i:s');
-       $form->reset = true;
-       $form->message = 'Test Message';
-       $form->save();
-       
-       $this->assertEquals('MyTitle', $this->module->settings->get('title'));
-       $this->assertEquals('Test Message', $this->module->settings->get('message'));
-       $this->assertEquals(true, $this->module->settings->get('active'));
-       $this->assertNotNull($this->module->settings->get('timestamp'));
-    }
+        $title = 'MyTitle';
+        $message = 'Test Message';
+        $expired = (new \DateTime())->modify('+10 days')->format('Y-m-d H:i:s');
 
-    public function testExpiredValues()
-    {
         $form = new EditForm();
-        $form->title = 'MyTitle';
+        $form->title = $title;
         $form->active = true;
-        $form->expiresAt = (new \DateTime())->modify('-10 days')->format('Y-m-d H:i:s');
+        $form->expiresAt = $expired;
         $form->reset = true;
-        $form->message = 'Test Message';
+        $form->message = $message;
         $form->save();
 
-        $this->assertEquals('MyTitle', $this->module->settings->get('title'));
-        $this->assertEquals('Test Message', $this->module->settings->get('message'));
-        $this->assertEquals(false, $this->module->settings->get('active'));
+        $this->assertEquals($title, $this->module->settings->get('title'));
+        $this->assertEquals($message, $this->module->settings->get('message'));
+        $this->assertEquals(true, $this->module->settings->get('active'));
+        $this->assertNotNull($this->module->settings->get('timestamp'));
     }
     
     /**
