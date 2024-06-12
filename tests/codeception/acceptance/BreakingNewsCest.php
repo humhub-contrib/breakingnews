@@ -17,6 +17,7 @@ class BreakingNewsCest
 
         $I->click('[for="editform-active"]'); // Active
         $I->fillField('EditForm[title]', 'Test title');
+        $I->fillField('EditForm[expiresAt]', (new \DateTime())->modify('+10 days')->format('m-d-y'));
         $I->fillField('#editform-message .humhub-ui-richtext', 'Test message');
         $I->click('[for="editform-reset"]'); // Mark as unseen for all users
         $I->click('Save');
