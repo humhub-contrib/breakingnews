@@ -46,6 +46,20 @@ class BreakingNewsCest
         $form->save();
         $I->expectTo('see the breaking news');
         $I->seeBreakingNews();
+
+        $I->amGoingTo('see not expired breaking news');
+        $form->active = true;
+        $form->expiresAt = (new \DateTime())->modify('+10 days')->format('Y-m-d H:i:s');
+        $form->save();
+        $I->expectTo('see the breaking news');
+        $I->seeBreakingNews();
+
+        $I->amGoingTo('not to see not expired breaking news');
+        $form->active = true;
+        $form->expiresAt = (new \DateTime())->modify('-10 days')->format('Y-m-d H:i:s');
+        $form->save();
+        $I->expectTo('not to see the breaking news');
+        $I->dontSeeBreakingNews();
         
         $I->amGoingTo('save the breaking news form again without activation');
         $form->active = false;
