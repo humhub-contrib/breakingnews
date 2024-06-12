@@ -104,6 +104,10 @@ class EditForm extends Model
             return false;
         }
 
+        if (!$this->active) {
+            $this->expiresAt = '';
+        }
+
         $this->module->settings->set('title', $this->title);
         $this->module->settings->set('message', $this->message);
         $this->module->settings->set('active', $this->active);
