@@ -12,8 +12,4 @@ class BreakingNewsAsset extends AssetBundle
         'js/humhub.breakingnews.js'
     ];
 
-    public $publishOptions = [
-        'forceCopy' => true,
-    ];
-
 }
