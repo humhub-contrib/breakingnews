@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.0.10 - Unreleased
------------------------
+1.0.10 (June 19, 2024)
+----------------------
 - Enh #29: Tests for `next` version
 - Enh #33: Add Expiration Date
 
