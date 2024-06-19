@@ -4,6 +4,7 @@ Changelog
 1.0.10 - Unreleased
 -----------------------
 - Enh #29: Tests for `next` version
+- Enh #33: Add Expiration Date
 
 1.0.9 (June 3, 2023)
 --------------------

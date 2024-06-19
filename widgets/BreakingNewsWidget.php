@@ -21,5 +21,3 @@ class BreakingNewsWidget extends \humhub\components\Widget
     }
 
 }
-
-?>
