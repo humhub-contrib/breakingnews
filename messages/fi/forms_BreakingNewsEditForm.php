@@ -5,6 +5,7 @@ return [
     'Mark as unseen for all users' => 'Merkitse näyttettäväksi kaikille käyttäjille',
     'Message' => 'Viesti',
     'Title' => 'Otsikko',
+    'Expired at' => '',
     'Groups whose members will see this breaking news' => '',
     'If no group is ticked, everyone will see this breaking news.' => '',
 ];
