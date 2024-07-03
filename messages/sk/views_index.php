@@ -1,4 +1,4 @@
 <?php
 return array (
-  'Close' => '닫기',
+  'Close' => 'Zavrieť',
 );
