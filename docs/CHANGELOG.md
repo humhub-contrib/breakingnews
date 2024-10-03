@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.0.11 (Unreleased)
+----------------------
+- Enh #: Use PHP CS Fixer
+
 1.0.10 (June 19, 2024)
 ----------------------
 - Enh #29: Tests for `next` version
