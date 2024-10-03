@@ -13,15 +13,14 @@ use Yii;
  */
 class BreakingNewsHelper extends Module
 {
-
     public function seeBreakingNews()
     {
         $this->assertTrue(Yii::$app->getModule('breakingnews')->showBreakingNews());
     }
-    
+
     public function dontSeeBreakingNews()
     {
         $this->assertFalse(Yii::$app->getModule('breakingnews')->showBreakingNews());
     }
-    
+
 }

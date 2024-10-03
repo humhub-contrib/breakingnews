@@ -9,11 +9,10 @@ use humhub\modules\breakingnews\models\EditForm;
 
 class BreakingNewsCest
 {
-
     /**
      * @var Module
      */
-    var $module;
+    public $module;
 
     public function _before()
     {
@@ -24,23 +23,23 @@ class BreakingNewsCest
         $this->module->settings->delete('active');
         $this->module->settings->delete('timestamp');
     }
-    
+
     public function testNewsActivation(FunctionalTester $I)
     {
         $I->amUser();
         $I->wantToTest('if the news activation works as expected');
         $I->amGoingTo('save the news form without activation');
-        
+
         $form = new EditForm();
         $form->title = 'MyTitle';
         $form->active = false;
         $form->reset = true;
         $form->message = 'Test Message';
         $form->save();
-        
+
         $I->expect('not to see the breaking news');
         $I->dontSeeBreakingNews();
-        
+
         $I->amGoingTo('activate the news form');
         $form->active = true;
         $form->save();
@@ -60,7 +59,7 @@ class BreakingNewsCest
         $form->save();
         $I->expectTo('not to see the breaking news');
         $I->dontSeeBreakingNews();
-        
+
         $I->amGoingTo('save the breaking news form again without activation');
         $form->active = false;
         $form->save();

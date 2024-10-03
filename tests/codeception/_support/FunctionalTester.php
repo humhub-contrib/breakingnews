@@ -1,4 +1,5 @@
 <?php
+
 namespace breakingnews;
 
 /**
@@ -19,8 +20,8 @@ namespace breakingnews;
 class FunctionalTester extends \FunctionalTester
 {
     use _generated\FunctionalTesterActions;
-    
-   /**
-    * Define custom actions here
-    */
+
+    /**
+     * Define custom actions here
+     */
 }
