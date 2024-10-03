@@ -2,5 +2,5 @@
 
 return [
     'modules' => ['breakingnews'],
-    'fixtures' => ['default']
+    'fixtures' => ['default'],
 ];

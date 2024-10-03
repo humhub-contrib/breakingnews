@@ -1,11 +1,11 @@
 <?php
+
 namespace breakingnews\acceptance;
 
 use breakingnews\AcceptanceTester;
 
 class BreakingNewsCest
 {
-    
     public function testCreateNews(AcceptanceTester $I)
     {
         $I->amAdmin();
@@ -24,21 +24,21 @@ class BreakingNewsCest
         $I->wait(3);
         $I->expectTo('see no errors');
         $I->dontSeeElement('.error-summary');
-        
+
         $I->logout();
-        
+
         $I->amGoingTo('check if the message is displayed');
         $I->amUser();
         $I->expectTo('see the breaking news modal');
         $I->wait(3);
         $I->see('Test title');
         $I->see('Test message');
-        
+
         $I->amGoingTo('test if the message disappears after page refresh');
         $I->amOnRoute(['/']);
         $I->wait(5);
         $I->dontSee('Test title');
         $I->dontSee('Test message');
     }
-   
+
 }

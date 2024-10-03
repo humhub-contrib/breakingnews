@@ -9,7 +9,7 @@ class BreakingNewsAsset extends AssetBundle
     public $sourcePath = '@breakingnews/resources';
     public $css = [];
     public $js = [
-        'js/humhub.breakingnews.js'
+        'js/humhub.breakingnews.js',
     ];
 
 }

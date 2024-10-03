@@ -12,7 +12,6 @@ use humhub\modules\breakingnews\models\Setting;
  */
 class IndexController extends Controller
 {
-
     /**
      * Dashboard Welcome
      *
