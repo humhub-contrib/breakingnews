@@ -14,5 +14,5 @@ use humhub\widgets\ModalButton;
     <?= RichTextToHtmlConverter::process($message) ?>
 </div>
 <div class="modal-footer">
-    <?= ModalButton::cancel(Yii::t('BreakingnewsModule.views_index', 'Close')) ?>
+    <?= ModalButton::cancel(Yii::t('BreakingnewsModule.base', 'Close')) ?>
 </div>
