@@ -4,6 +4,7 @@ Changelog
 1.0.11 (Unreleased)
 ----------------------
 - Enh #35: Use PHP CS Fixer
+- Enh #36: Reduce translation message categories
 
 1.0.10 (June 19, 2024)
 ----------------------

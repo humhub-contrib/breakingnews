@@ -22,7 +22,7 @@ BreakingNewsAsset::register($this);
 
 ?>
 <div class="panel panel-default">
-    <div class="panel-heading"><?= Yii::t('BreakingnewsModule.views_admin_index', 'Breaking News Configuration') ?></div>
+    <div class="panel-heading"><?= Yii::t('BreakingnewsModule.base', 'Breaking News Configuration') ?></div>
     <div class="panel-body">
 
         <?php $form = ActiveForm::begin() ?>
@@ -49,7 +49,7 @@ BreakingNewsAsset::register($this);
 
         <?= $form->field($model, 'title') ?>
         <?= $form->field($model, 'message')->widget(RichTextField::class) ?>
-        <?= $form->beginCollapsibleFields(Yii::t('BreakingnewsModule.views_admin_index', 'Groups restriction')) ?>
+        <?= $form->beginCollapsibleFields(Yii::t('BreakingnewsModule.base', 'Groups restriction')) ?>
         <?= $form->field($model, 'activeGroups')->checkboxList(ArrayHelper::map(Group::find()->all(), 'id', 'name')) ?>
         <?= $form->endCollapsibleFields() ?>
         <?= $form->field($model, 'reset')->checkbox() ?>
@@ -57,7 +57,7 @@ BreakingNewsAsset::register($this);
         <hr>
 
         <?= Button::save()->submit() ?>
-        <?= Button::defaultType(Yii::t('BreakingnewsModule.views_admin_index', 'Back to modules'))
+        <?= Button::defaultType(Yii::t('BreakingnewsModule.base', 'Back to modules'))
             ->link(['/admin/module']) ?>
 
         <?php ActiveForm::end() ?>

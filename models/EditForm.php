@@ -75,12 +75,12 @@ class EditForm extends Model
     public function attributeLabels()
     {
         return [
-            'active' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Active'),
-            'expiresAt' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Expired at'),
-            'activeGroups' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Groups whose members will see this breaking news'),
-            'title' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Title'),
-            'message' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Message'),
-            'reset' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Mark as unseen for all users'),
+            'active' => Yii::t('BreakingnewsModule.base', 'Active'),
+            'expiresAt' => Yii::t('BreakingnewsModule.base', 'Expired at'),
+            'activeGroups' => Yii::t('BreakingnewsModule.base', 'Groups whose members will see this breaking news'),
+            'title' => Yii::t('BreakingnewsModule.base', 'Title'),
+            'message' => Yii::t('BreakingnewsModule.base', 'Message'),
+            'reset' => Yii::t('BreakingnewsModule.base', 'Mark as unseen for all users'),
         ];
     }
 
@@ -90,8 +90,8 @@ class EditForm extends Model
     public function attributeHints()
     {
         return [
-            'activeGroups' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'If no group is ticked, everyone will see this breaking news.'),
-            'message' => Yii::t('BreakingnewsModule.views_admin_index', 'Note: You can use markdown syntax.'),
+            'activeGroups' => Yii::t('BreakingnewsModule.base', 'If no group is ticked, everyone will see this breaking news.'),
+            'message' => Yii::t('BreakingnewsModule.base', 'Note: You can use markdown syntax.'),
         ];
     }
 
