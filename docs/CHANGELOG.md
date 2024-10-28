@@ -5,6 +5,7 @@ Changelog
 ----------------------
 - Enh #35: Use PHP CS Fixer
 - Enh #36: Reduce translation message categories
+- Enh #37: Rename "Expired at" to "Expire"
 
 1.0.10 (June 19, 2024)
 ----------------------
