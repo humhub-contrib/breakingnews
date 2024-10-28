@@ -4,9 +4,9 @@ namespace humhub\modules\breakingnews\models;
 
 use DateTime;
 use DateTimeZone;
+use humhub\libs\DbDateValidator;
 use humhub\modules\breakingnews\Module;
 use humhub\modules\content\widgets\richtext\RichText;
-use humhub\libs\DbDateValidator;
 use Yii;
 use yii\base\Model;
 
@@ -76,7 +76,7 @@ class EditForm extends Model
     {
         return [
             'active' => Yii::t('BreakingnewsModule.base', 'Active'),
-            'expiresAt' => Yii::t('BreakingnewsModule.base', 'Expired at'),
+            'expiresAt' => Yii::t('BreakingnewsModule.base', 'Expire'),
             'activeGroups' => Yii::t('BreakingnewsModule.base', 'Groups whose members will see this breaking news'),
             'title' => Yii::t('BreakingnewsModule.base', 'Title'),
             'message' => Yii::t('BreakingnewsModule.base', 'Message'),
