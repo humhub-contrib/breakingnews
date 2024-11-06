@@ -5,7 +5,7 @@ return [
     'Back to modules' => '',
     'Breaking News Configuration' => '',
     'Close' => '',
-    'Expired at' => '',
+    'Expire' => '',
     'Groups restriction' => '',
     'Groups whose members will see this breaking news' => '',
     'If no group is ticked, everyone will see this breaking news.' => '',

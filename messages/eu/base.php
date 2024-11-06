@@ -1,15 +1,16 @@
 <?php
+
 return [
-  'Active' => '',
-  'Back to modules' => 'Itzuli moduluetara',
-  'Breaking News Configuration' => '',
-  'Close' => 'Itxi',
-  'Expired at' => '',
-  'Groups restriction' => '',
-  'Groups whose members will see this breaking news' => '',
-  'If no group is ticked, everyone will see this breaking news.' => '',
-  'Mark as unseen for all users' => '',
-  'Message' => 'Mezua',
-  'Note: You can use markdown syntax.' => '',
-  'Title' => 'Izenburua',
+    'Back to modules' => 'Itzuli moduluetara',
+    'Close' => 'Itxi',
+    'Message' => 'Mezua',
+    'Title' => 'Izenburua',
+    'Active' => '',
+    'Breaking News Configuration' => '',
+    'Expire' => '',
+    'Groups restriction' => '',
+    'Groups whose members will see this breaking news' => '',
+    'If no group is ticked, everyone will see this breaking news.' => '',
+    'Mark as unseen for all users' => '',
+    'Note: You can use markdown syntax.' => '',
 ];
