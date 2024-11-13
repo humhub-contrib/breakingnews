@@ -2,7 +2,6 @@
 
 namespace humhub\modules\breakingnews;
 
-use humhub\modules\user\controllers\MustChangePasswordController;
 use Yii;
 use yii\helpers\Url;
 
