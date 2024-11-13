@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.0.12 (November 13, 2024)
+-------------------------
+- Updated translations
+
 1.0.11 (October 28, 2024)
 -------------------------
 - Enh #35: Use PHP CS Fixer
