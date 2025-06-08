@@ -3,15 +3,15 @@
 use humhub\modules\breakingnews\assets\BreakingNewsAsset;
 use humhub\modules\breakingnews\models\EditForm;
 use humhub\modules\content\widgets\richtext\RichTextField;
-use humhub\modules\ui\form\widgets\ActiveForm;
+use humhub\widgets\form\ActiveForm;
 use humhub\modules\user\models\Group;
-use humhub\widgets\Button;
+use humhub\widgets\bootstrap\Button;
 use humhub\modules\ui\form\widgets\DatePicker;
 use humhub\modules\ui\form\widgets\TimePicker;
-use humhub\libs\Html;
+use humhub\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\web\JsExpression;
-use yii\web\View;
+use humhub\components\View;
 
 /**
  * @var EditForm $model
@@ -57,7 +57,7 @@ BreakingNewsAsset::register($this);
         <hr>
 
         <?= Button::save()->submit() ?>
-        <?= Button::defaultType(Yii::t('BreakingnewsModule.base', 'Back to modules'))
+        <?= Button::light(Yii::t('BreakingnewsModule.base', 'Back to modules'))
             ->link(['/admin/module']) ?>
 
         <?php ActiveForm::end() ?>
