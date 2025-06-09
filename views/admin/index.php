@@ -29,7 +29,7 @@ BreakingNewsAsset::register($this);
 
         <?= $form->field($model, 'active')->checkbox(['data' => ['action-change' => 'breakingnews.changeStatus']]) ?>
 
-        <div class="row" id="expiration_row" style="<?= !$model->active ? Html::cssStyleFromArray(['display' => 'none']) : '' ?>">
+        <div class="row<?= !$model->active ? ' d-none' : ''?>" id="expiration_row">
             <div class="col-6" style="z-index: 10">
                 <?= $form
                     ->field($model, 'expiresAt')
