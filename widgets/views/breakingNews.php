@@ -5,7 +5,7 @@ use yii\helpers\Url;
 ?>
 <script <?= Html::nonce() ?>>
     $(document).ready(function () {
-        $('#globalModal').modal('show');
-        $('#globalModal .modal-content').load('<?php echo Url::to(['/breakingnews/index']); ?>');
+        var modal = humhub.require('humhub.modules.ui.modal');
+        modal.global.load('<?php echo Url::to(['/breakingnews/index']); ?>');
     });
 </script>
