@@ -25,12 +25,12 @@ BreakingNewsAsset::register($this);
     <div class="panel-heading"><?= Yii::t('BreakingnewsModule.base', 'Breaking News Configuration') ?></div>
     <div class="panel-body">
 
-        <?php $form = ActiveForm::begin() ?>
+        <?php $form = ActiveForm::begin(['options' => ['class' => 'container']]) ?>
 
         <?= $form->field($model, 'active')->checkbox(['data' => ['action-change' => 'breakingnews.changeStatus']]) ?>
 
         <div class="row" id="expiration_row" style="<?= !$model->active ? Html::cssStyleFromArray(['display' => 'none']) : '' ?>">
-            <div class="col-sm-6 col-xs-6" style="z-index: 10">
+            <div class="col-6" style="z-index: 10">
                 <?= $form
                     ->field($model, 'expiresAt')
                     ->widget(DatePicker::class, [
@@ -39,7 +39,7 @@ BreakingNewsAsset::register($this);
                         ],
                     ]) ?>
             </div>
-            <div class="col-sm-6 col-xs-6">
+            <div class="col-6">
                 <?= $form
                     ->field($model, 'expiresTime')
                     ->widget(TimePicker::class)
