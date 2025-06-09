@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.1.0 TBA
+-------------------------
+- Enh #42: Migration to Bootstrap 5 for HumHub 1.18
+
 1.0.12 (November 13, 2024)
 -------------------------
 - Updated translations
