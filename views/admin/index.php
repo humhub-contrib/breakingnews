@@ -3,15 +3,15 @@
 use humhub\modules\breakingnews\assets\BreakingNewsAsset;
 use humhub\modules\breakingnews\models\EditForm;
 use humhub\modules\content\widgets\richtext\RichTextField;
-use humhub\modules\ui\form\widgets\ActiveForm;
+use humhub\widgets\form\ActiveForm;
 use humhub\modules\user\models\Group;
-use humhub\widgets\Button;
+use humhub\widgets\bootstrap\Button;
 use humhub\modules\ui\form\widgets\DatePicker;
 use humhub\modules\ui\form\widgets\TimePicker;
-use humhub\libs\Html;
+use humhub\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\web\JsExpression;
-use yii\web\View;
+use humhub\components\View;
 
 /**
  * @var EditForm $model
@@ -25,12 +25,12 @@ BreakingNewsAsset::register($this);
     <div class="panel-heading"><?= Yii::t('BreakingnewsModule.base', 'Breaking News Configuration') ?></div>
     <div class="panel-body">
 
-        <?php $form = ActiveForm::begin() ?>
+        <?php $form = ActiveForm::begin(['options' => ['class' => 'container']]) ?>
 
         <?= $form->field($model, 'active')->checkbox(['data' => ['action-change' => 'breakingnews.changeStatus']]) ?>
 
-        <div class="row" id="expiration_row" style="<?= !$model->active ? Html::cssStyleFromArray(['display' => 'none']) : '' ?>">
-            <div class="col-sm-6 col-xs-6" style="z-index: 10">
+        <div class="row<?= !$model->active ? ' d-none' : ''?>" id="expiration_row">
+            <div class="col-6" style="z-index: 10">
                 <?= $form
                     ->field($model, 'expiresAt')
                     ->widget(DatePicker::class, [
@@ -39,7 +39,7 @@ BreakingNewsAsset::register($this);
                         ],
                     ]) ?>
             </div>
-            <div class="col-sm-6 col-xs-6">
+            <div class="col-6">
                 <?= $form
                     ->field($model, 'expiresTime')
                     ->widget(TimePicker::class)
@@ -57,7 +57,7 @@ BreakingNewsAsset::register($this);
         <hr>
 
         <?= Button::save()->submit() ?>
-        <?= Button::defaultType(Yii::t('BreakingnewsModule.base', 'Back to modules'))
+        <?= Button::light(Yii::t('BreakingnewsModule.base', 'Back to modules'))
             ->link(['/admin/module']) ?>
 
         <?php ActiveForm::end() ?>

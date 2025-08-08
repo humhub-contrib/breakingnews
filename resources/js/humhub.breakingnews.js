@@ -4,7 +4,7 @@ humhub.module('breakingnews', function (module, require, $) {
         var isChecked = event.$target.prop('checked');
         var expirationRow = $('#expiration_row');
 
-        isChecked ? expirationRow.show() : expirationRow.hide();
+        isChecked ? expirationRow.removeClass('d-none') : expirationRow.addClass('d-none');
     }
 
     module.export({
