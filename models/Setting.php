@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.humhub.org/
  * @copyright Copyright (c) 2022 HumHub GmbH & Co. KG
@@ -12,14 +13,13 @@ use humhub\components\ActiveRecord;
 /**
  * This model is used for proper attaching files to module setting text fields
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property string $value
  * @property string $module_id
  */
 class Setting extends ActiveRecord
 {
-
     /**
      * @inheritdoc
      */

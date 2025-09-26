@@ -1,18 +1,16 @@
 <?php
 
 use humhub\modules\content\widgets\richtext\converter\RichTextToHtmlConverter;
-use humhub\widgets\ModalButton;
+use humhub\widgets\modal\Modal;
+use humhub\widgets\modal\ModalButton;
 
 /* @var string $title */
 /* @var string $message */
 ?>
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h4 class="modal-title" id="myModalLabel"><?= $title ?></h4>
-</div>
-<div class="modal-body" data-ui-markdown>
+<?php Modal::beginDialog([
+    'title' => $title,
+    'footer' => ModalButton::cancel(Yii::t('BreakingnewsModule.base', 'Close')),
+    'dialogOptions' => ['data-ui-markdown' => true],
+]) ?>
     <?= RichTextToHtmlConverter::process($message) ?>
-</div>
-<div class="modal-footer">
-    <?= ModalButton::cancel(Yii::t('BreakingnewsModule.views_index', 'Close')) ?>
-</div>
+<?php Modal::endDialog() ?>

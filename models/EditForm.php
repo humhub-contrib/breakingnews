@@ -2,6 +2,9 @@
 
 namespace humhub\modules\breakingnews\models;
 
+use DateTime;
+use DateTimeZone;
+use humhub\libs\DbDateValidator;
 use humhub\modules\breakingnews\Module;
 use humhub\modules\content\widgets\richtext\RichText;
 use Yii;
@@ -15,10 +18,13 @@ class EditForm extends Model
     private $module;
 
     public $active;
+    public $expiresAt;
     public $activeGroups;
     public $title;
     public $message;
     public $reset;
+
+    public $expiresTime;
 
     /**
      * @inheritdoc
@@ -29,8 +35,25 @@ class EditForm extends Model
 
         $this->title = $this->module->settings->get('title');
         $this->message = $this->module->settings->get('message');
+        $this->expiresAt = $this->module->settings->get('expiresAt');
         $this->active = $this->module->settings->get('active');
         $this->activeGroups = $this->module->settings->getSerialized('activeGroups');
+
+        $this->initTime();
+    }
+
+    private function initTime()
+    {
+        if ($this->expiresAt === null) {
+            $this->expiresTime = '';
+        } else {
+            $expiresAt = new DateTime($this->expiresAt, new DateTimeZone('UTC'));
+            $this->expiresTime = Yii::$app->formatter->asTime($expiresAt, 'short');
+
+            if ($expiresAt < new DateTime('now', new DateTimeZone('UTC'))) {
+                $this->active = false;
+            }
+        }
     }
 
     /**
@@ -40,6 +63,8 @@ class EditForm extends Model
     {
         return [
             [['title', 'message'], 'required'],
+            [['expiresAt'], DbDateValidator::class, 'timeAttribute' => 'expiresTime'],
+            [['expiresTime'], 'date', 'type' => 'time', 'format' => Yii::$app->formatter->isShowMeridiem() ? 'h:mm a' : 'php:H:i'],
             [['reset', 'active', 'activeGroups'], 'safe'],
         ];
     }
@@ -50,11 +75,12 @@ class EditForm extends Model
     public function attributeLabels()
     {
         return [
-            'active' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Active'),
-            'activeGroups' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Groups whose members will see this breaking news'),
-            'title' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Title'),
-            'message' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Message'),
-            'reset' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'Mark as unseen for all users'),
+            'active' => Yii::t('BreakingnewsModule.base', 'Active'),
+            'expiresAt' => Yii::t('BreakingnewsModule.base', 'Expire'),
+            'activeGroups' => Yii::t('BreakingnewsModule.base', 'Groups whose members will see this breaking news'),
+            'title' => Yii::t('BreakingnewsModule.base', 'Title'),
+            'message' => Yii::t('BreakingnewsModule.base', 'Message'),
+            'reset' => Yii::t('BreakingnewsModule.base', 'Mark as unseen for all users'),
         ];
     }
 
@@ -64,8 +90,8 @@ class EditForm extends Model
     public function attributeHints()
     {
         return [
-            'activeGroups' => Yii::t('BreakingnewsModule.forms_BreakingNewsEditForm', 'If no group is ticked, everyone will see this breaking news.'),
-            'message' => Yii::t('BreakingnewsModule.views_admin_index', 'Note: You can use markdown syntax.'),
+            'activeGroups' => Yii::t('BreakingnewsModule.base', 'If no group is ticked, everyone will see this breaking news.'),
+            'message' => Yii::t('BreakingnewsModule.base', 'Note: You can use markdown syntax.'),
         ];
     }
 
@@ -78,9 +104,14 @@ class EditForm extends Model
             return false;
         }
 
+        if (!$this->active) {
+            $this->expiresAt = '';
+        }
+
         $this->module->settings->set('title', $this->title);
         $this->module->settings->set('message', $this->message);
         $this->module->settings->set('active', $this->active);
+        $this->module->settings->set('expiresAt', $this->expiresAt);
         $this->module->settings->setSerialized('activeGroups', $this->activeGroups);
 
         $lastTimeStamp = $this->module->settings->get('timestamp');

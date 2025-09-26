@@ -9,15 +9,14 @@ use yii\helpers\Url;
 
 class AdminController extends Controller
 {
-
     /**
      * Configuration Action for Super Admins
      */
     public function actionIndex()
     {
         $form = new EditForm();
-        
-        if ($form->load(Yii::$app->request->post()) && $form->validate() && $form->save()) {
+
+        if ($form->load(Yii::$app->request->post()) && $form->save()) {
 
             return $this->redirect(Url::to(['/breakingnews/admin/index']));
         }
