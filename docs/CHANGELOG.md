@@ -4,6 +4,7 @@ Changelog
 1.1.1 - Unreleased
 -----------------------
 - Fix #32: Update module resources path
+- Fix #45: Fix asset bundle
 
 1.1.0 (July 26, 2025)
 ---------------------
