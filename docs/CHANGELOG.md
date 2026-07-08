@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.1.1 - Unreleased
------------------------
+1.1.1 (July 8, 2026)
+--------------------
 - Fix #32: Update module resources path
 
 1.1.0 (July 26, 2025)
