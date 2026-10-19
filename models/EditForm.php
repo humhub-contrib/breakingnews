@@ -3,10 +3,11 @@
 namespace humhub\modules\breakingnews\models;
 
 use DateTime;
-use DateTimeZone;
+use humhub\libs\DateHelper;
 use humhub\libs\DbDateValidator;
 use humhub\modules\breakingnews\Module;
 use humhub\modules\content\widgets\richtext\RichText;
+use humhub\modules\user\models\Group;
 use Yii;
 use yii\base\Model;
 
@@ -44,13 +45,15 @@ class EditForm extends Model
 
     private function initTime()
     {
-        if ($this->expiresAt === null) {
+        if (empty($this->expiresAt)) {
+            $this->expiresAt = null;
             $this->expiresTime = '';
         } else {
-            $expiresAt = new DateTime($this->expiresAt, new DateTimeZone('UTC'));
+            // The expiration date is stored in the system time zone (see DbDateValidator)
+            $expiresAt = new DateTime($this->expiresAt, DateHelper::getSystemTimeZone());
             $this->expiresTime = Yii::$app->formatter->asTime($expiresAt, 'short');
 
-            if ($expiresAt < new DateTime('now', new DateTimeZone('UTC'))) {
+            if ($expiresAt < new DateTime('now', DateHelper::getSystemTimeZone())) {
                 $this->active = false;
             }
         }
@@ -62,11 +65,61 @@ class EditForm extends Model
     public function rules()
     {
         return [
+            // Arrays and other non-scalar values are not allowed (they would also break the form rendering)
+            [['title', 'message', 'expiresAt', 'expiresTime'], 'filter', 'filter' => static fn($value) => is_scalar($value) ? (string)$value : ''],
+            [['reset', 'active'], 'filter', 'filter' => static fn($value) => is_scalar($value) ? $value : 0],
             [['title', 'message'], 'required'],
             [['expiresAt'], DbDateValidator::class, 'timeAttribute' => 'expiresTime'],
+            [['expiresAt'], 'validateNotInPast'],
             [['expiresTime'], 'date', 'type' => 'time', 'format' => Yii::$app->formatter->isShowMeridiem() ? 'h:mm a' : 'php:H:i'],
-            [['reset', 'active', 'activeGroups'], 'safe'],
+            [['activeGroups'], 'validateActiveGroups', 'skipOnEmpty' => false],
         ];
+    }
+
+    /**
+     * The expiration date can't be in the past for an active breaking news
+     */
+    public function validateNotInPast($attribute)
+    {
+        if (!$this->active || empty($this->$attribute)) {
+            return;
+        }
+
+        $expiresAt = DateTime::createFromFormat('Y-m-d H:i:s', $this->$attribute, DateHelper::getSystemTimeZone());
+        if ($expiresAt && $expiresAt < new DateTime('now', DateHelper::getSystemTimeZone())) {
+            $this->addError($attribute, Yii::t('BreakingnewsModule.base', 'The expiration date must not be in the past.'));
+        }
+    }
+
+    /**
+     * Only an array of existing group IDs is allowed
+     */
+    public function validateActiveGroups($attribute)
+    {
+        $value = $this->$attribute;
+
+        if ($value === null || $value === '') {
+            $this->$attribute = [];
+            return;
+        }
+
+        $groupIds = array_map('strval', Group::find()->select('id')->column());
+        $valid = is_array($value);
+        foreach ($valid ? $value : [] as $groupId) {
+            if (!is_scalar($groupId) || !in_array((string)$groupId, $groupIds, true)) {
+                $valid = false;
+                break;
+            }
+        }
+
+        if (!$valid) {
+            // Reset an invalid value, so it can't break the form rendering
+            $this->$attribute = [];
+            $this->addError($attribute, Yii::t('BreakingnewsModule.base', 'Invalid groups.'));
+            return;
+        }
+
+        $this->$attribute = array_values(array_unique(array_map('intval', $value)));
     }
 
     /**

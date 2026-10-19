@@ -1,17 +1,16 @@
 <?php
 
+use humhub\components\View;
 use humhub\modules\breakingnews\assets\BreakingNewsAsset;
 use humhub\modules\breakingnews\models\EditForm;
 use humhub\modules\content\widgets\richtext\RichTextField;
-use humhub\widgets\form\ActiveForm;
-use humhub\modules\user\models\Group;
-use humhub\widgets\bootstrap\Button;
 use humhub\modules\ui\form\widgets\DatePicker;
 use humhub\modules\ui\form\widgets\TimePicker;
-use humhub\helpers\Html;
+use humhub\modules\user\models\Group;
+use humhub\widgets\bootstrap\Button;
+use humhub\widgets\form\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\web\JsExpression;
-use humhub\components\View;
 
 /**
  * @var EditForm $model
@@ -19,13 +18,12 @@ use humhub\components\View;
  */
 
 BreakingNewsAsset::register($this);
-
 ?>
 <div class="panel panel-default">
     <div class="panel-heading"><?= Yii::t('BreakingnewsModule.base', 'Breaking News Configuration') ?></div>
     <div class="panel-body">
 
-        <?php $form = ActiveForm::begin(['options' => ['class' => 'container']]) ?>
+        <?php $form = ActiveForm::begin() ?>
 
         <?= $form->field($model, 'active')->checkbox(['data' => ['action-change' => 'breakingnews.changeStatus']]) ?>
 
