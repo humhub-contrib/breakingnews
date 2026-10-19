@@ -1,5 +1,6 @@
 <?php
 
+use humhub\helpers\Html;
 use humhub\modules\content\widgets\richtext\converter\RichTextToHtmlConverter;
 use humhub\widgets\modal\Modal;
 use humhub\widgets\modal\ModalButton;
@@ -8,7 +9,7 @@ use humhub\widgets\modal\ModalButton;
 /* @var string $message */
 ?>
 <?php Modal::beginDialog([
-    'title' => $title,
+    'title' => Html::encode($title),
     'footer' => ModalButton::cancel(Yii::t('BreakingnewsModule.base', 'Close')),
     'dialogOptions' => ['data-ui-markdown' => true],
 ]) ?>
