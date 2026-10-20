@@ -13,4 +13,6 @@ return [
     'Title' => 'Título',
     'Expire' => '',
     'Groups restriction' => '',
+    'Invalid groups.' => '',
+    'The expiration date must not be in the past.' => '',
 ];

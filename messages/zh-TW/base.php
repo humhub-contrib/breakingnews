@@ -12,5 +12,7 @@ return [
     'Groups restriction' => '',
     'Groups whose members will see this breaking news' => '',
     'If no group is ticked, everyone will see this breaking news.' => '',
+    'Invalid groups.' => '',
     'Note: You can use markdown syntax.' => '',
+    'The expiration date must not be in the past.' => '',
 ];

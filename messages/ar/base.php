@@ -13,4 +13,6 @@ return [
     'Note: You can use markdown syntax.' => 'ملاحظة: يمكنك استعمال التأثيرات على النص',
     'Title' => 'العنوان',
     'Expire' => '',
+    'Invalid groups.' => '',
+    'The expiration date must not be in the past.' => '',
 ];

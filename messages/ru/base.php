@@ -13,4 +13,6 @@ return [
     'Note: You can use markdown syntax.' => 'К сведению: Вы можете использовать синтаксис markdown',
     'Title' => 'Заголовок',
     'Expire' => '',
+    'Invalid groups.' => '',
+    'The expiration date must not be in the past.' => '',
 ];

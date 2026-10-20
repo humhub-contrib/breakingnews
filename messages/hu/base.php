@@ -13,4 +13,6 @@ return [
     'Note: You can use markdown syntax.' => 'Megjegyzés: Használhatsz "markdown" szintaxisokat.',
     'Title' => 'Tárgy',
     'Expire' => '',
+    'Invalid groups.' => '',
+    'The expiration date must not be in the past.' => '',
 ];
