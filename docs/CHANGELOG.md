@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.1.2 (Unreleased)
---------------------
+1.1.2 (October 26, 2026)
+------------------------
 - Fix #45: Expiration time zone; Active state of the form; Access to the news modal; Form validation; Escaped title; News modal not shown in 1.19
 
 1.1.1 (July 8, 2026)
