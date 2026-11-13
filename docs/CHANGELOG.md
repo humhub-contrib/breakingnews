@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.2.0 (Unreleased)
+------------------
+- Enh: Date and time pickers of the core namespace instead of the deprecated `ui` module classes
+
 1.1.2 (October 26, 2026)
 ------------------------
 - Fix #45: Expiration time zone; Active state of the form; Access to the news modal; Form validation; Escaped title; News modal not shown in 1.19

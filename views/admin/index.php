@@ -4,11 +4,11 @@ use humhub\components\View;
 use humhub\modules\breakingnews\assets\BreakingNewsAsset;
 use humhub\modules\breakingnews\models\EditForm;
 use humhub\modules\content\widgets\richtext\RichTextField;
-use humhub\modules\ui\form\widgets\DatePicker;
-use humhub\modules\ui\form\widgets\TimePicker;
 use humhub\modules\user\models\Group;
 use humhub\widgets\bootstrap\Button;
 use humhub\widgets\form\ActiveForm;
+use humhub\widgets\form\DatePicker;
+use humhub\widgets\form\TimePicker;
 use yii\helpers\ArrayHelper;
 use yii\web\JsExpression;
 
