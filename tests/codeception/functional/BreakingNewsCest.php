@@ -53,10 +53,9 @@ class BreakingNewsCest
         $I->expectTo('see the breaking news');
         $I->seeBreakingNews();
 
-        $I->amGoingTo('not to see not expired breaking news');
-        $form->active = true;
-        $form->expiresAt = (new \DateTime())->modify('-10 days')->format('Y-m-d H:i:s');
-        $form->save();
+        $I->amGoingTo('not to see expired breaking news');
+        // The form rejects a past expiration date for an active news, so the news expires on its own
+        $this->module->settings->set('expiresAt', (new \DateTime())->modify('-10 days')->format('Y-m-d H:i:s'));
         $I->expectTo('not to see the breaking news');
         $I->dontSeeBreakingNews();
 

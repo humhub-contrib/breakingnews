@@ -4,6 +4,7 @@ Changelog
 1.2.0 (Unreleased)
 ------------------
 - Enh: Date and time pickers of the core namespace instead of the deprecated `ui` module classes
+- Fix: Functional test set a past expiration date through the form, which the validation rejects since 1.1.2
 
 1.1.2 (October 26, 2026)
 ------------------------
